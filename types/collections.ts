@@ -4,6 +4,8 @@ import {
 	Timestamp,
 } from "firebase/firestore";
 
+
+
 export class User {
 	email: string;
 	displayName?: string;
