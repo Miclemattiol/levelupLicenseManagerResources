@@ -1,6 +1,8 @@
 import {
+	DocumentData,
 	DocumentReference,
 	FirestoreDataConverter,
+	QueryDocumentSnapshot,
 	Timestamp,
 } from "firebase/firestore";
 
@@ -78,11 +80,11 @@ export class Token {
 	}
 
 	static collectionName = "tokens";
-	static converter: FirestoreDataConverter<Token> = {
+	static converter = {
 		toFirestore: (token: Token) => {
 			return { ...token };
 		},
-		fromFirestore: (snapshot): Token => {
+		fromFirestore: (snapshot: QueryDocumentSnapshot<DocumentData, DocumentData>): Token => {
 			const data = snapshot.data();
 			console.log(data);
 			return new Token({
