@@ -1,0 +1,4 @@
+types/index.ts
+types/collections.ts
+types/webCollections.ts
+types/adminCollection.ts

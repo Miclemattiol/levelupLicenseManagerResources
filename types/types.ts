@@ -1,10 +1,25 @@
 import {
-	DocumentData,
-	DocumentReference,
-	FirestoreDataConverter,
-	QueryDocumentSnapshot,
-	Timestamp,
+	DocumentReference as WebDocumentReference,
+	FirestoreDataConverter as WebFirestoreDataConverter,
+	QueryDocumentSnapshot as WebQueryDocumentSnapshot,
+	Timestamp as WebTimestamp,
 } from 'firebase/firestore';
+
+import {
+	DocumentReference as AdminDocumentReference,
+	FirestoreDataConverter as AdminFirestoreDataConverter,
+	QueryDocumentSnapshot as AdminQueryDocumentSnapshot,
+	Timestamp as AdminTimestamp,
+} from 'firebase-admin/firestore';
+
+type DocumentReference<T> = WebDocumentReference<T> | AdminDocumentReference<T>;
+type FirestoreDataConverter<T> =
+	| WebFirestoreDataConverter<T>
+	| AdminFirestoreDataConverter<T>;
+type QueryDocumentSnapshot =
+	| WebQueryDocumentSnapshot
+	| AdminQueryDocumentSnapshot;
+type Timestamp = WebTimestamp | AdminTimestamp;
 
 export class User {
 	email: string;
@@ -34,7 +49,7 @@ export class User {
 		toFirestore: (user: User) => {
 			return { ...user };
 		},
-		fromFirestore: (snapshot): User => {
+		fromFirestore: (snapshot: QueryDocumentSnapshot): User => {
 			const data = snapshot.data();
 			return new User({
 				email: data.email,
@@ -78,13 +93,11 @@ export class Token {
 	}
 
 	static collectionName = 'tokens';
-	static converter = {
+	static converter: FirestoreDataConverter<Token> = {
 		toFirestore: (token: Token) => {
 			return { ...token };
 		},
-		fromFirestore: (
-			snapshot: QueryDocumentSnapshot<DocumentData, DocumentData>,
-		): Token => {
+		fromFirestore: (snapshot: QueryDocumentSnapshot): Token => {
 			const data = snapshot.data();
 			console.log(data);
 			return new Token({
@@ -127,7 +140,7 @@ export class Project {
 		toFirestore: (project: Project) => {
 			return { ...project };
 		},
-		fromFirestore: (snapshot): Project => {
+		fromFirestore: (snapshot: QueryDocumentSnapshot): Project => {
 			const data = snapshot.data();
 			return new Project({
 				name: data.name,
