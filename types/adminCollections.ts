@@ -1,10 +1,9 @@
 import { DocumentReference, Timestamp } from 'firebase-admin/firestore';
-import { User as _User, Token as _Token } from './types';
+import { User as _User, Token as _Token, Project as _Project } from './types';
 
 export class User extends _User {
 	tokens: DocumentReference[];
 
-	//override constructor
 	constructor({
 		email,
 		displayName,
@@ -20,7 +19,6 @@ export class User extends _User {
 		this.tokens = tokens ?? [];
 	}
 
-	//override static converter
 	static converter = {
 		toFirestore: (user: User) => {
 			return { ...user };
@@ -37,7 +35,6 @@ export class Token extends _Token {
 	project: DocumentReference<Project>;
 	expiration?: Timestamp;
 
-	//override constructor
 	constructor({
 		owner,
 		project,
@@ -59,7 +56,6 @@ export class Token extends _Token {
 		this.expiration = expiration;
 	}
 
-	//override static converter
 	static converter = {
 		toFirestore: (token: Token) => {
 			return { ...token };
@@ -71,26 +67,24 @@ export class Token extends _Token {
 	};
 }
 
-export class Project {
-	name: string;
-	version?: string;
+export class Project extends _Project {
 	tokens: DocumentReference<Token>[];
 
 	constructor({
 		name,
 		version,
 		tokens,
+		tiers,
 	}: {
 		name: string;
 		version?: string;
 		tokens?: DocumentReference<Token>[];
+		tiers: number;
 	}) {
-		this.name = name;
-		this.version = version;
+		super({ name, version, tiers });
 		this.tokens = tokens ?? [];
 	}
 
-	static collectionName = 'projects';
 	static converter = {
 		toFirestore: (project: Project) => {
 			return { ...project };

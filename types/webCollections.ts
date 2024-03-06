@@ -1,10 +1,9 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore';
-import { User as _User, Token as _Token } from './types';
+import { User as _User, Token as _Token, Project as _Project } from './types';
 
 export class User extends _User {
-    tokens: DocumentReference[];
+	tokens: DocumentReference[];
 
-	//override constructor
 	constructor({
 		email,
 		displayName,
@@ -14,13 +13,12 @@ export class User extends _User {
 		email: string;
 		displayName?: string;
 		admin?: boolean;
-		tokens?: DocumentReference[];
+		tokens?: DocumentReference<Token>[];
 	}) {
 		super({ email, displayName, admin });
 		this.tokens = tokens ?? [];
 	}
 
-	//override static converter
 	static converter = {
 		toFirestore: (user: User) => {
 			return { ...user };
@@ -33,71 +31,67 @@ export class User extends _User {
 }
 
 export class Token extends _Token {
-    owner: DocumentReference;
-    project: DocumentReference;
-    expiration?: Timestamp;
+	owner: DocumentReference<User>;
+	project: DocumentReference<Project>;
+	expiration?: Timestamp;
 
-    //override constructor
-    constructor({
-        owner,
-        project,
-        device,
-        devices,
-        expiration,
-        tier,
-    }: {
-        owner: DocumentReference<User>;
-        project: DocumentReference;
-        device?: number;
-        devices: number;
-        expiration?: any;
-        tier: number;
-    }) {
-        super({ device, devices, tier });
-        this.owner = owner;
-        this.project = project;
-        this.expiration = expiration;
-    }
+	constructor({
+		owner,
+		project,
+		device,
+		devices,
+		expiration,
+		tier,
+	}: {
+		owner: DocumentReference<User>;
+		project: DocumentReference<Project>;
+		device?: number;
+		devices: number;
+		expiration?: any;
+		tier: number;
+	}) {
+		super({ device, devices, tier });
+		this.owner = owner;
+		this.project = project;
+		this.expiration = expiration;
+	}
 
-    //override static converter
-    static converter = {
-        toFirestore: (token: Token) => {
-            return { ...token };
-        },
-        fromFirestore: (snapshot: any): Token => {
-            const data = snapshot.data();
-            return new Token({ ...data });
-        },
-    };
+	static converter = {
+		toFirestore: (token: Token) => {
+			return { ...token };
+		},
+		fromFirestore: (snapshot: any): Token => {
+			const data = snapshot.data();
+			return new Token({ ...data });
+		},
+	};
 }
 
-export class Project {
-    name: string;
-    version?: string;
-    tokens: DocumentReference[];
+export class Project extends _Project {
+	tokens: DocumentReference<Token>[];
 
-    constructor({
-        name,
-        version,
-        tokens,
-    }: {
-        name: string;
-        version?: string;
-        tokens?: DocumentReference[];
-    }) {
-        this.name = name;
-        this.version = version;
-        this.tokens = tokens ?? [];
-    }
+	constructor({
+		name,
+		version,
+		tokens,
+		tiers,
+	}: {
+		name: string;
+		version?: string;
+		tokens?: DocumentReference<Token>[];
+		tiers: number;
+	}) {
+		super({ name, version, tiers });
+		this.tokens = tokens ?? [];
+	}
 
-    static collectionName = 'projects';
-    static converter = {
-        toFirestore: (project: Project) => {
-            return { ...project };
-        },
-        fromFirestore: (snapshot: any): Project => {
-            const data = snapshot.data();
-            return new Project({ ...data });
-        },
-    };
+	static converter = {
+		toFirestore: (project: Project) => {
+			return { ...project };
+		},
+		fromFirestore: (snapshot: any): Project => {
+			const data = snapshot.data();
+			return new Project({ ...data });
+		},
+	};
 }
