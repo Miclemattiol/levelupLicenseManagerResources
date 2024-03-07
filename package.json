@@ -1,6 +1,7 @@
 {
   "name": "leveluplicensemanagerresources",
   "version": "0.0.1",
+  "private": true,
   "description": "Shared resources for levelUp license manager",
   "main": "dist/index.js",
   "scripts": {
