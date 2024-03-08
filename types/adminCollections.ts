@@ -2,7 +2,7 @@ import { DocumentReference, Timestamp } from 'firebase-admin/firestore';
 import { User as _User, Token as _Token, Project as _Project } from './types';
 
 export class User extends _User {
-	tokens: DocumentReference[];
+	tokens: DocumentReference<Token>[];
 
 	constructor({
 		email,
