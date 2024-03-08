@@ -19,8 +19,17 @@
 		"/dist"
 	],
 	"exports": {
-		".": "./dist/index.js",
-		"./admin": "./dist/types/adminCollections.js",
-		"./web": "./dist/types/webCollections.js"
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.js"
+		},
+		"./admin": {
+			"import": "./dist/types/adminCollections.js",
+			"require": "./dist/types/adminCollections.js"
+		},
+		"./web": {
+			"import": "./dist/types/webCollections.js",
+			"require": "./dist/types/webCollections.js"
+		}
 	}
 }
