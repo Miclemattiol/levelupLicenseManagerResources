@@ -1,26 +1,3 @@
-import {
-	DocumentReference as WebDocumentReference,
-	FirestoreDataConverter as WebFirestoreDataConverter,
-	QueryDocumentSnapshot as WebQueryDocumentSnapshot,
-	Timestamp as WebTimestamp,
-} from 'firebase/firestore';
-
-import {
-	DocumentReference as AdminDocumentReference,
-	FirestoreDataConverter as AdminFirestoreDataConverter,
-	QueryDocumentSnapshot as AdminQueryDocumentSnapshot,
-	Timestamp as AdminTimestamp,
-} from 'firebase-admin/firestore';
-
-// type DocumentReference<T> = WebDocumentReference<T> | AdminDocumentReference<T>;
-// type FirestoreDataConverter<T> =
-// 	| WebFirestoreDataConverter<T>
-// 	| AdminFirestoreDataConverter<T>;
-// type QueryDocumentSnapshot =
-// 	| WebQueryDocumentSnapshot
-// 	| AdminQueryDocumentSnapshot;
-// type Timestamp = WebTimestamp | AdminTimestamp;
-
 export abstract class User {
 	email: string;
 	displayName?: string;
