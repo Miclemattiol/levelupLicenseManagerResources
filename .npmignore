@@ -1,8 +1,0 @@
-types/index.ts
-types/collections.ts
-index.ts
-.gitignore
-.env*
-.package-lock.json
-
-*/test*
