@@ -8,5 +8,3 @@ export {
 	Token as WebToken,
 	User as WebUser,
 } from './types/webCollections';
-
-export { funzioneProva } from './prova';

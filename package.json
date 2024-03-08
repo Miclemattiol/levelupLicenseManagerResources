@@ -17,5 +17,9 @@
 	"types": "dist/index.d.ts",
 	"files": [
 		"/dist"
-	]
+	],
+	"exports": {
+		"./admin": "./dist/types/adminCollections.js",
+		"./web": "./dist/types/webCollections.js"
+	}
 }
