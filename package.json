@@ -17,19 +17,5 @@
 	"types": "dist/index.d.ts",
 	"files": [
 		"/dist"
-	],
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"require": "./dist/index.js"
-		},
-		"./admin": {
-			"types": "./dist/types/adminCollections.d.ts",
-			"require": "./dist/types/adminCollections.js"
-		},
-		"./web": {
-			"types": "./dist/types/webCollections.d.ts",
-			"require": "./dist/types/webCollections.js"
-		}
-	}
+	]
 }
