@@ -1,15 +1,13 @@
 "use strict";
-// export {
-// 	Project as AdminProject,
-// 	Token as AdminToken,
-// 	User as AdminUser,
-// } from './types/adminCollections';
-// export {
-// 	Project as WebProject,
-// 	Token as WebToken,
-// 	User as WebUser,
-// } from './types/webCollections';
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.funzioneProva = void 0;
+exports.funzioneProva = exports.WebUser = exports.WebToken = exports.WebProject = exports.AdminUser = exports.AdminToken = exports.AdminProject = void 0;
+var adminCollections_1 = require("./types/adminCollections");
+Object.defineProperty(exports, "AdminProject", { enumerable: true, get: function () { return adminCollections_1.Project; } });
+Object.defineProperty(exports, "AdminToken", { enumerable: true, get: function () { return adminCollections_1.Token; } });
+Object.defineProperty(exports, "AdminUser", { enumerable: true, get: function () { return adminCollections_1.User; } });
+var webCollections_1 = require("./types/webCollections");
+Object.defineProperty(exports, "WebProject", { enumerable: true, get: function () { return webCollections_1.Project; } });
+Object.defineProperty(exports, "WebToken", { enumerable: true, get: function () { return webCollections_1.Token; } });
+Object.defineProperty(exports, "WebUser", { enumerable: true, get: function () { return webCollections_1.User; } });
 var prova_1 = require("./prova");
 Object.defineProperty(exports, "funzioneProva", { enumerable: true, get: function () { return prova_1.funzioneProva; } });
