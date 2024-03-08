@@ -19,6 +19,7 @@
 		"/dist"
 	],
 	"exports": {
+		".": "./dist/index.js",
 		"./admin": "./dist/types/adminCollections.js",
 		"./web": "./dist/types/webCollections.js"
 	}
