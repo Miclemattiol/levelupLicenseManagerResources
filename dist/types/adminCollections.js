@@ -11,11 +11,11 @@ class User extends types_1.User {
 exports.User = User;
 User.converter = {
     toFirestore: (user) => {
-        return { ...user };
+        return Object.assign({}, user);
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();
-        return new User({ ...data });
+        return new User(Object.assign({}, data));
     },
 };
 class Token extends types_1.Token {
@@ -29,11 +29,11 @@ class Token extends types_1.Token {
 exports.Token = Token;
 Token.converter = {
     toFirestore: (token) => {
-        return { ...token };
+        return Object.assign({}, token);
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();
-        return new Token({ ...data });
+        return new Token(Object.assign({}, data));
     },
 };
 class Project extends types_1.Project {
@@ -45,10 +45,10 @@ class Project extends types_1.Project {
 exports.Project = Project;
 Project.converter = {
     toFirestore: (project) => {
-        return { ...project };
+        return Object.assign({}, project);
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();
-        return new Project({ ...data });
+        return new Project(Object.assign({}, data));
     },
 };
