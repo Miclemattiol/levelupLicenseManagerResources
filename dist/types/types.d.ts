@@ -10,7 +10,7 @@ export declare abstract class User {
     });
     static collectionName: string;
 }
-export declare abstract class Token {
+export declare abstract class License {
     device?: number;
     devices: number;
     abstract expiration?: unknown;

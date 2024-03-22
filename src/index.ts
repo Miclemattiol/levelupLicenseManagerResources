@@ -1,10 +1,10 @@
 export {
 	Project as AdminProject,
-	Token as AdminToken,
+	License as AdminToken,
 	User as AdminUser,
 } from './types/adminCollections';
 export {
 	Project as WebProject,
-	Token as WebToken,
+	License as WebToken,
 	User as WebUser,
 } from './types/webCollections';

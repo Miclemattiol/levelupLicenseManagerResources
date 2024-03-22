@@ -21,7 +21,7 @@ export abstract class User {
 	static collectionName = 'users';
 }
 
-export abstract class Token {
+export abstract class License {
 	device?: number;
 	devices: number;
 	abstract expiration?: unknown;

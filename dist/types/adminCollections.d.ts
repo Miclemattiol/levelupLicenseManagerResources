@@ -1,16 +1,16 @@
 import { DocumentReference, Timestamp } from 'firebase-admin/firestore';
-import { User as _User, Token as _Token, Project as _Project } from './types';
+import { User as _User, License as _License, Project as _Project } from './types';
 export declare class User extends _User {
-    tokens: DocumentReference<Token>[];
+    tokens: DocumentReference<License>[];
     constructor({ email, displayName, admin, tokens, }: {
         email: string;
         displayName?: string;
         admin?: boolean;
-        tokens?: DocumentReference<Token>[];
+        tokens?: DocumentReference<License>[];
     });
     static converter: {
         toFirestore: (user: User) => {
-            tokens: DocumentReference<Token>[];
+            tokens: DocumentReference<License>[];
             email: string;
             displayName?: string | undefined;
             admin: boolean;
@@ -18,7 +18,7 @@ export declare class User extends _User {
         fromFirestore: (snapshot: any) => User;
     };
 }
-export declare class Token extends _Token {
+export declare class License extends _License {
     owner: DocumentReference<User>;
     project: DocumentReference<Project>;
     expiration?: Timestamp;
@@ -31,7 +31,7 @@ export declare class Token extends _Token {
         tier: number;
     });
     static converter: {
-        toFirestore: (token: Token) => {
+        toFirestore: (token: License) => {
             owner: DocumentReference<User>;
             project: DocumentReference<Project>;
             expiration?: Timestamp | undefined;
@@ -39,20 +39,20 @@ export declare class Token extends _Token {
             devices: number;
             tier: number;
         };
-        fromFirestore: (snapshot: any) => Token;
+        fromFirestore: (snapshot: any) => License;
     };
 }
 export declare class Project extends _Project {
-    tokens: DocumentReference<Token>[];
+    tokens: DocumentReference<License>[];
     constructor({ name, version, tokens, tiers, }: {
         name: string;
         version?: string;
-        tokens?: DocumentReference<Token>[];
+        tokens?: DocumentReference<License>[];
         tiers: number;
     });
     static converter: {
         toFirestore: (project: Project) => {
-            tokens: DocumentReference<Token>[];
+            tokens: DocumentReference<License>[];
             name: string;
             version?: string | undefined;
             tiers: number;

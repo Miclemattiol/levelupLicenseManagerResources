@@ -1,8 +1,12 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore';
-import { User as _User, Token as _Token, Project as _Project } from './types';
+import {
+	User as _User,
+	License as _License,
+	Project as _Project,
+} from './types';
 
 export class User extends _User {
-	tokens: DocumentReference<Token>[];
+	tokens: DocumentReference<License>[];
 
 	constructor({
 		email,
@@ -13,7 +17,7 @@ export class User extends _User {
 		email: string;
 		displayName?: string;
 		admin?: boolean;
-		tokens?: DocumentReference<Token>[];
+		tokens?: DocumentReference<License>[];
 	}) {
 		super({ email, displayName, admin });
 		this.tokens = tokens ?? [];
@@ -30,7 +34,7 @@ export class User extends _User {
 	};
 }
 
-export class Token extends _Token {
+export class License extends _License {
 	owner: DocumentReference<User>;
 	project: DocumentReference<Project>;
 	expiration?: Timestamp;
@@ -57,18 +61,18 @@ export class Token extends _Token {
 	}
 
 	static converter = {
-		toFirestore: (token: Token) => {
+		toFirestore: (token: License) => {
 			return { ...token };
 		},
-		fromFirestore: (snapshot: any): Token => {
+		fromFirestore: (snapshot: any): License => {
 			const data = snapshot.data();
-			return new Token({ ...data });
+			return new License({ ...data });
 		},
 	};
 }
 
 export class Project extends _Project {
-	tokens: DocumentReference<Token>[];
+	tokens: DocumentReference<License>[];
 
 	constructor({
 		name,
@@ -78,7 +82,7 @@ export class Project extends _Project {
 	}: {
 		name: string;
 		version?: string;
-		tokens?: DocumentReference<Token>[];
+		tokens?: DocumentReference<License>[];
 		tiers: number;
 	}) {
 		super({ name, version, tiers });

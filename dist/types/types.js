@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Project = exports.Token = exports.User = void 0;
+exports.Project = exports.License = exports.User = void 0;
 class User {
     constructor({ email, displayName, admin, }) {
         this.admin = false;
@@ -11,15 +11,15 @@ class User {
 }
 exports.User = User;
 User.collectionName = 'users';
-class Token {
+class License {
     constructor({ device, devices, tier, }) {
         this.device = device;
         this.devices = devices;
         this.tier = tier;
     }
 }
-exports.Token = Token;
-Token.collectionName = 'tokens';
+exports.License = License;
+License.collectionName = 'tokens';
 class Project {
     constructor({ name, version, tiers, }) {
         this.name = name;
