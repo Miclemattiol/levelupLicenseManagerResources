@@ -1,29 +1,10 @@
 import { DocumentReference, Timestamp } from 'firebase-admin/firestore';
-import { User as _User, License as _License, Project as _Project } from './types';
-export declare class User extends _User {
-    tokens: DocumentReference<License>[];
-    constructor({ email, displayName, admin, tokens, }: {
-        email: string;
-        displayName?: string;
-        admin?: boolean;
-        tokens?: DocumentReference<License>[];
-    });
-    static converter: {
-        toFirestore: (user: User) => {
-            tokens: DocumentReference<License>[];
-            email: string;
-            displayName?: string | undefined;
-            admin: boolean;
-        };
-        fromFirestore: (snapshot: any) => User;
-    };
-}
+import { License as _License, Project as _Project } from './types';
 export declare class License extends _License {
-    owner: DocumentReference<User>;
     project: DocumentReference<Project>;
     expiration?: Timestamp;
     constructor({ owner, project, device, devices, expiration, tier, }: {
-        owner: DocumentReference<User>;
+        owner: string;
         project: DocumentReference<Project>;
         device?: number;
         devices: number;
@@ -32,11 +13,11 @@ export declare class License extends _License {
     });
     static converter: {
         toFirestore: (token: License) => {
-            owner: DocumentReference<User>;
             project: DocumentReference<Project>;
             expiration?: Timestamp | undefined;
             device?: number | undefined;
             devices: number;
+            owner: string;
             tier: number;
         };
         fromFirestore: (snapshot: any) => License;

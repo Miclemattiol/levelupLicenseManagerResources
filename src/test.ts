@@ -8,7 +8,6 @@ import {
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore';
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
 import { connectStorageEmulator, getStorage } from 'firebase/storage';
-import { User } from './types/webCollections';
 
 dotenv.config();
 
@@ -37,4 +36,3 @@ connectFunctionsEmulator(getFunctions(firebaseApp), 'localhost', 5001);
 export const auth = getAuth(firebaseApp);
 export const db = getFirestore(firebaseApp);
 
-console.log(User.collectionName);

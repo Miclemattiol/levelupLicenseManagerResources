@@ -1,27 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Project = exports.License = exports.User = void 0;
+exports.Project = exports.License = void 0;
 const types_1 = require("./types");
-class User extends types_1.User {
-    constructor({ email, displayName, admin, tokens, }) {
-        super({ email, displayName, admin });
-        this.tokens = tokens !== null && tokens !== void 0 ? tokens : [];
-    }
-}
-exports.User = User;
-User.converter = {
-    toFirestore: (user) => {
-        return Object.assign({}, user);
-    },
-    fromFirestore: (snapshot) => {
-        const data = snapshot.data();
-        return new User(Object.assign({}, data));
-    },
-};
 class License extends types_1.License {
     constructor({ owner, project, device, devices, expiration, tier, }) {
-        super({ device, devices, tier });
-        this.owner = owner;
+        super({ device, devices, tier, owner });
         this.project = project;
         this.expiration = expiration;
     }

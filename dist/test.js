@@ -7,7 +7,6 @@ const auth_1 = require("firebase/auth");
 const firestore_1 = require("firebase/firestore");
 const functions_1 = require("firebase/functions");
 const storage_1 = require("firebase/storage");
-const webCollections_1 = require("./types/webCollections");
 dotenv.config();
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -28,4 +27,3 @@ exports.firebaseApp = (0, app_1.getApps)().length === 0 ? (0, app_1.initializeAp
 (0, functions_1.connectFunctionsEmulator)((0, functions_1.getFunctions)(exports.firebaseApp), 'localhost', 5001);
 exports.auth = (0, auth_1.getAuth)(exports.firebaseApp);
 exports.db = (0, firestore_1.getFirestore)(exports.firebaseApp);
-console.log(webCollections_1.User.collectionName);

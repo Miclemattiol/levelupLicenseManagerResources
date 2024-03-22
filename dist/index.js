@@ -1,11 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.WebUser = exports.WebToken = exports.WebProject = exports.AdminUser = exports.AdminToken = exports.AdminProject = void 0;
+exports.WebToken = exports.WebProject = exports.AdminToken = exports.AdminProject = void 0;
 var adminCollections_1 = require("./types/adminCollections");
 Object.defineProperty(exports, "AdminProject", { enumerable: true, get: function () { return adminCollections_1.Project; } });
 Object.defineProperty(exports, "AdminToken", { enumerable: true, get: function () { return adminCollections_1.License; } });
-Object.defineProperty(exports, "AdminUser", { enumerable: true, get: function () { return adminCollections_1.User; } });
 var webCollections_1 = require("./types/webCollections");
 Object.defineProperty(exports, "WebProject", { enumerable: true, get: function () { return webCollections_1.Project; } });
 Object.defineProperty(exports, "WebToken", { enumerable: true, get: function () { return webCollections_1.License; } });
-Object.defineProperty(exports, "WebUser", { enumerable: true, get: function () { return webCollections_1.User; } });

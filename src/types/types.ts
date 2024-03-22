@@ -1,45 +1,25 @@
-export abstract class User {
-	email: string;
-	displayName?: string;
-	abstract tokens: unknown[];
-	admin: boolean = false;
-
-	constructor({
-		email,
-		displayName,
-		admin,
-	}: {
-		email: string;
-		displayName?: string;
-		admin?: boolean;
-	}) {
-		this.email = email;
-		this.displayName = displayName;
-		this.admin = admin ?? false;
-	}
-
-	static collectionName = 'users';
-}
-
 export abstract class License {
 	device?: number;
 	devices: number;
+	owner: string;
 	abstract expiration?: unknown;
-	abstract owner: unknown;
 	abstract project: unknown;
 	tier: number;
 
 	constructor({
 		device,
 		devices,
+		owner,
 		tier,
 	}: {
 		device?: number;
 		devices: number;
+		owner: string;
 		tier: number;
 	}) {
 		this.device = device;
 		this.devices = devices;
+		this.owner = owner;
 		this.tier = tier;
 	}
 
