@@ -1,8 +1,5 @@
 import { DocumentReference, Timestamp } from 'firebase/firestore';
-import {
-	License as _License,
-	Project as _Project,
-} from './types';
+import { License as _License, Project as _Project } from './types';
 
 export class License extends _License {
 	project: DocumentReference<Project>;
@@ -24,7 +21,7 @@ export class License extends _License {
 		tier: number;
 	}) {
 		super({ device, devices, tier, owner });
-		
+
 		this.project = project;
 		this.expiration = expiration;
 	}
@@ -41,21 +38,21 @@ export class License extends _License {
 }
 
 export class Project extends _Project {
-	tokens: DocumentReference<License>[];
+	licenses: DocumentReference<License>[];
 
 	constructor({
 		name,
 		version,
-		tokens,
+		licenses,
 		tiers,
 	}: {
 		name: string;
 		version?: string;
-		tokens?: DocumentReference<License>[];
+		licenses?: DocumentReference<License>[];
 		tiers: number;
 	}) {
 		super({ name, version, tiers });
-		this.tokens = tokens ?? [];
+		this.licenses = licenses ?? [];
 	}
 
 	static converter = {

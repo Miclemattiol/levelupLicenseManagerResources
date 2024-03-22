@@ -20,9 +20,9 @@ License.converter = {
     },
 };
 class Project extends types_1.Project {
-    constructor({ name, version, tokens, tiers, }) {
+    constructor({ name, version, licenses: licenses, tiers, }) {
         super({ name, version, tiers });
-        this.tokens = tokens !== null && tokens !== void 0 ? tokens : [];
+        this.licenses = licenses !== null && licenses !== void 0 ? licenses : [];
     }
 }
 exports.Project = Project;

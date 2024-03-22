@@ -37,21 +37,21 @@ export class License extends _License {
 }
 
 export class Project extends _Project {
-	tokens: DocumentReference<License>[];
+	licenses: DocumentReference<License>[];
 
 	constructor({
 		name,
 		version,
-		tokens,
+		licenses: licenses,
 		tiers,
 	}: {
 		name: string;
 		version?: string;
-		tokens?: DocumentReference<License>[];
+		licenses?: DocumentReference<License>[];
 		tiers: number;
 	}) {
 		super({ name, version, tiers });
-		this.tokens = tokens ?? [];
+		this.licenses = licenses ?? [];
 	}
 
 	static converter = {

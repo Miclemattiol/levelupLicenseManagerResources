@@ -24,16 +24,16 @@ export declare class License extends _License {
     };
 }
 export declare class Project extends _Project {
-    tokens: DocumentReference<License>[];
-    constructor({ name, version, tokens, tiers, }: {
+    licenses: DocumentReference<License>[];
+    constructor({ name, version, licenses: licenses, tiers, }: {
         name: string;
         version?: string;
-        tokens?: DocumentReference<License>[];
+        licenses?: DocumentReference<License>[];
         tiers: number;
     });
     static converter: {
         toFirestore: (project: Project) => {
-            tokens: DocumentReference<License>[];
+            licenses: DocumentReference<License>[];
             name: string;
             version?: string | undefined;
             tiers: number;

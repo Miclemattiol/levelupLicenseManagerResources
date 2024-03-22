@@ -29,7 +29,7 @@ export abstract class License {
 export abstract class Project {
 	name: string;
 	version?: string;
-	abstract tokens: unknown[];
+	abstract licenses: unknown[];
 	tiers: number;
 
 	constructor({
