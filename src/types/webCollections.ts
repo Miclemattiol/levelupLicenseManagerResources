@@ -49,7 +49,7 @@ export class Project extends _Project {
 		name: string;
 		version?: string;
 		licenses?: DocumentReference<License>[];
-		tiers: number;
+		tiers: string[];
 	}) {
 		super({ name, version, tiers });
 		this.licenses = licenses ?? [];
