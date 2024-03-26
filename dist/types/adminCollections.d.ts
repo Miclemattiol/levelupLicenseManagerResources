@@ -29,14 +29,14 @@ export declare class Project extends _Project {
         name: string;
         version?: string;
         licenses?: DocumentReference<License>[];
-        tiers: number;
+        tiers: string[];
     });
     static converter: {
         toFirestore: (project: Project) => {
             licenses: DocumentReference<License>[];
             name: string;
             version?: string | undefined;
-            tiers: number;
+            tiers: string[];
         };
         fromFirestore: (snapshot: any) => Project;
     };

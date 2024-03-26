@@ -17,11 +17,11 @@ export declare abstract class Project {
     name: string;
     version?: string;
     abstract licenses: unknown[];
-    tiers: number;
+    tiers: string[];
     constructor({ name, version, tiers, }: {
         name: string;
         version?: string;
-        tiers: number;
+        tiers: string[];
     });
     static collectionName: string;
 }
