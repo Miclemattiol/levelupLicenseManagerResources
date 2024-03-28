@@ -28,7 +28,7 @@ class Project extends types_1.Project {
 exports.Project = Project;
 Project.converter = {
     toFirestore: (project) => {
-        return Object.assign({}, Object.entries(project).filter(([, value]) => value !== undefined));
+        return Object.assign({}, project);
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();
