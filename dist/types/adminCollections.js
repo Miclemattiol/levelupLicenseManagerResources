@@ -11,8 +11,8 @@ class License extends types_1.License {
 }
 exports.License = License;
 License.converter = {
-    toFirestore: (token) => {
-        return Object.assign({}, token);
+    toFirestore: (license) => {
+        return Object.assign({}, Object.entries(license).filter(([, value]) => value !== undefined));
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();
@@ -28,7 +28,7 @@ class Project extends types_1.Project {
 exports.Project = Project;
 Project.converter = {
     toFirestore: (project) => {
-        return Object.assign({}, project);
+        return Object.assign({}, Object.entries(project).filter(([, value]) => value !== undefined));
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();

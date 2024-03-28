@@ -26,8 +26,12 @@ export class License extends _License {
 	}
 
 	static converter = {
-		toFirestore: (token: License) => {
-			return { ...token };
+		toFirestore: (license: License) => {
+			return {
+				...Object.entries(license).filter(
+					([, value]) => value !== undefined,
+				),
+			};
 		},
 		fromFirestore: (snapshot: any): License => {
 			const data = snapshot.data();
@@ -56,7 +60,11 @@ export class Project extends _Project {
 
 	static converter = {
 		toFirestore: (project: Project) => {
-			return { ...project };
+			return {
+				...Object.entries(project).filter(
+					([, value]) => value !== undefined,
+				),
+			};
 		},
 		fromFirestore: (snapshot: any): Project => {
 			const data = snapshot.data();
