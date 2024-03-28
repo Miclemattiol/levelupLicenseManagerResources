@@ -28,6 +28,7 @@ class Project extends types_1.Project {
 exports.Project = Project;
 Project.converter = {
     toFirestore: (project) => {
+        console.log(project);
         const ret = project.version ? Object.assign({}, project) : {
             name: project.name,
             tiers: project.tiers,

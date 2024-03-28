@@ -61,6 +61,7 @@ export class Project extends _Project {
 
 	static converter = {
 		toFirestore: (project: Project) => {
+			console.log(project);
 			const ret = project.version? {
 				...project
 			}: {
