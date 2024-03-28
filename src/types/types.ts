@@ -1,8 +1,8 @@
 export abstract class License {
-	device?: number;
+	device: number | null;
 	devices: number;
 	owner: string;
-	abstract expiration?: unknown;
+	abstract expiration: unknown | null;
 	abstract project: unknown;
 	tier: number;
 
@@ -17,7 +17,7 @@ export abstract class License {
 		owner: string;
 		tier: number;
 	}) {
-		this.device = device;
+		this.device = device ?? null;
 		this.devices = devices;
 		this.owner = owner;
 		this.tier = tier;

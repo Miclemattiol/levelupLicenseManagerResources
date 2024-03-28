@@ -1,8 +1,8 @@
 export declare abstract class License {
-    device?: number;
+    device: number | null;
     devices: number;
     owner: string;
-    abstract expiration?: unknown;
+    abstract expiration: unknown | null;
     abstract project: unknown;
     tier: number;
     constructor({ device, devices, owner, tier, }: {

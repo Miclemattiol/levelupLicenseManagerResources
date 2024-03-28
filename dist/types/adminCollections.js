@@ -6,13 +6,13 @@ class License extends types_1.License {
     constructor({ owner, project, device, devices, expiration, tier, }) {
         super({ device, devices, tier, owner });
         this.project = project;
-        this.expiration = expiration;
+        this.expiration = expiration !== null && expiration !== void 0 ? expiration : null;
     }
 }
 exports.License = License;
 License.converter = {
     toFirestore: (license) => {
-        return Object.assign({}, Object.entries(license).filter(([, value]) => value !== undefined));
+        return Object.assign({}, license);
     },
     fromFirestore: (snapshot) => {
         const data = snapshot.data();

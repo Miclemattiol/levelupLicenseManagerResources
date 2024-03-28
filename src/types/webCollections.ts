@@ -3,7 +3,7 @@ import { License as _License, Project as _Project } from './types';
 
 export class License extends _License {
 	project: DocumentReference<Project>;
-	expiration?: Timestamp;
+	expiration: Timestamp | null;
 
 	constructor({
 		owner,
@@ -17,21 +17,19 @@ export class License extends _License {
 		project: DocumentReference<Project>;
 		device?: number;
 		devices: number;
-		expiration?: any;
+		expiration?: Timestamp;
 		tier: number;
 	}) {
 		super({ device, devices, tier, owner });
 
 		this.project = project;
-		this.expiration = expiration;
+		this.expiration = expiration ?? null;
 	}
 
 	static converter = {
 		toFirestore: (license: License) => {
 			return {
-				...Object.entries(license).filter(
-					([, value]) => value !== undefined,
-				),
+				...license
 			};
 		},
 		fromFirestore: (snapshot: any): License => {
