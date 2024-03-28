@@ -69,6 +69,7 @@ export class Project extends _Project {
 				tiers: project.tiers,
 				licenses: project.licenses
 			}
+			return ret;
 			return { ...Object.entries(project).filter(([, value]) => value !== undefined)};
 		},
 		fromFirestore: (snapshot: any): Project => {

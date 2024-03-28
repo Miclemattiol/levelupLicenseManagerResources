@@ -109,6 +109,11 @@ export declare class Project extends _Project {
     });
     static converter: {
         toFirestore: (project: Project) => {
+            licenses: DocumentReference<License>[];
+            name: string;
+            version?: string | undefined;
+            tiers: string[];
+        } | {
             [x: number]: [string, any];
             length: number;
             toString(): string;

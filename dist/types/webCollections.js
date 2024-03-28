@@ -34,6 +34,7 @@ Project.converter = {
             tiers: project.tiers,
             licenses: project.licenses
         };
+        return ret;
         return Object.assign({}, Object.entries(project).filter(([, value]) => value !== undefined));
     },
     fromFirestore: (snapshot) => {
