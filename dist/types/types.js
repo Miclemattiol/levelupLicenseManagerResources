@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Project = exports.License = void 0;
 class License {
     constructor({ device, devices, owner, tier, }) {
-        this.device = device !== null && device !== void 0 ? device : null;
+        this.device = device !== null && device !== void 0 ? device : 0;
         this.devices = devices;
         this.owner = owner;
         this.tier = tier;

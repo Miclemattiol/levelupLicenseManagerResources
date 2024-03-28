@@ -17,7 +17,7 @@ export abstract class License {
 		owner: string;
 		tier: number;
 	}) {
-		this.device = device ?? null;
+		this.device = device ?? 0;
 		this.devices = devices;
 		this.owner = owner;
 		this.tier = tier;
