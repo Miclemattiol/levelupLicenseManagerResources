@@ -61,16 +61,7 @@ export class Project extends _Project {
 
 	static converter = {
 		toFirestore: (project: Project) => {
-			console.log(project);
-			const ret = project.version? {
-				...project
-			}: {
-				name: project.name,
-				tiers: project.tiers,
-				licenses: project.licenses
-			}
-			return ret;
-			return { ...Object.entries(project).filter(([, value]) => value !== undefined)};
+			return { ...project};
 		},
 		fromFirestore: (snapshot: any): Project => {
 			const data = snapshot.data();

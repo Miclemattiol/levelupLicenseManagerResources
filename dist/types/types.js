@@ -14,7 +14,7 @@ License.collectionName = 'tokens';
 class Project {
     constructor({ name, version, tiers, }) {
         this.name = name;
-        this.version = version;
+        this.version = version !== null && version !== void 0 ? version : null;
         this.tiers = tiers;
     }
 }

@@ -15,7 +15,7 @@ export declare abstract class License {
 }
 export declare abstract class Project {
     name: string;
-    version?: string;
+    version: string | null;
     abstract licenses: unknown[];
     tiers: string[];
     constructor({ name, version, tiers, }: {

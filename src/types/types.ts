@@ -28,7 +28,7 @@ export abstract class License {
 
 export abstract class Project {
 	name: string;
-	version?: string;
+	version: string | null;
 	abstract licenses: unknown[];
 	tiers: string[];
 
@@ -42,7 +42,7 @@ export abstract class Project {
 		tiers: string[];
 	}) {
 		this.name = name;
-		this.version = version;
+		this.version = version ?? null;
 		this.tiers = tiers;
 	}
 
